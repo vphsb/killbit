@@ -50,7 +50,11 @@
 
 
     <script>
-      hasDot=[0,0,1,0,0,0,0,1];
+
+    function init_dots(){
+        hasDot=[0,0,1,0,0,0,0,1];
+    }
+      
 
 
     function drawDots(){
@@ -67,7 +71,7 @@
         }
     }
 
-      function moveDots() {
+    function moveDots() {
         let temp=hasDot[0];
         for (let i = 0; i < 7; i++) {
             hasDot[i]=hasDot[i+1];
@@ -75,11 +79,11 @@
         hasDot[7]=temp;
         drawDots();
 
-      }
+    }
 
-      setInterval(moveDots, 500);
+   
 
-      function addDot() {
+    function addDot() {
         hasDot[7]=!hasDot[7];
         drawDots();
         let dots = 0;
@@ -102,6 +106,9 @@
 
       let addButton = document.getElementById("KILL");
       addButton.addEventListener("click", addDot);
+      init_dots();
+      setInterval(moveDots, 500);
+
     </script>
   </body>
 </html>
