@@ -23,6 +23,12 @@
         left: 50%;
         transform: translate(-50%, -50%);
       }
+
+      #message {
+        font-size: 48px;
+        font-family: sans-serif;
+        visibility: hidden;
+      }
     </style>
   </head>
   <body>
@@ -38,6 +44,8 @@
       <div class="box"></div>
       <div class="box"></div>
     </div>
+
+    <div id="message"></div>
 
 
 
@@ -80,11 +88,15 @@
         }
         if(dots==0)
         {
-            alert("YEAH!");
+            let msg = document.getElementById("message");
+            msg.innerText = "YEAH!";
+            msg.style.visibility = "visible";
         }
         else if(dots==8)
         {
-            alert("Uppsi!");
+            let msg = document.getElementById("message");
+            msg.innerText = "UPPSI!";
+            msg.style.visibility = "visible";
         }
       }
 
