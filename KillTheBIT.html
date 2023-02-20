@@ -55,7 +55,18 @@
         hasDot=[0,0,1,0,0,0,0,1];
     }
       
+    function reset_game(){
+        init_dots();
+        let msg = document.getElementById("message");
+        msg.style.visibility = "hidden";
+    }
 
+    function message_user(text){
+        let msg = document.getElementById("message");
+        msg.innerText = text;
+        msg.style.visibility = "visible";
+        setTimeout(reset_game, 2000);
+    }
 
     function drawDots(){
         for (let i = 0; i < 8; i++) {
@@ -92,15 +103,11 @@
         }
         if(dots==0)
         {
-            let msg = document.getElementById("message");
-            msg.innerText = "YEAH!";
-            msg.style.visibility = "visible";
+            message_user("YEAH!");
         }
         else if(dots==8)
         {
-            let msg = document.getElementById("message");
-            msg.innerText = "UPPSI!";
-            msg.style.visibility = "visible";
+            message_user("UPPSI!");
         }
       }
 
