@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Kill the Bit</title>
+    <style>
+      .box {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background-color: black;
+        border: 1px solid rgb(151, 151, 151);
+        position: relative;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: red;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    </style>
+  </head>
+  <body>
+    <button id="KILL">Zapp!</button>
+
+    <div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+    </div>
+
+
+
+    <script>
+      hasDot=[0,0,1,0,0,0,0,1];
+
+
+    function drawDots(){
+        for (let i = 0; i < 8; i++) {
+            let currentBox = document.querySelectorAll(".box")[i];
+            while (currentBox.firstChild) {
+                currentBox.removeChild(currentBox.firstChild);
+            }
+            if(hasDot[i]){
+                let dot = document.createElement("div");
+                dot.classList.add("dot");
+                currentBox.appendChild(dot);
+            }
+        }
+    }
+
+      function moveDots() {
+        let temp=hasDot[0];
+        for (let i = 0; i < 7; i++) {
+            hasDot[i]=hasDot[i+1];
+        }
+        hasDot[7]=temp;
+        drawDots();
+
+      }
+
+      setInterval(moveDots, 500);
+
+      function addDot() {
+        hasDot[7]=!hasDot[7];
+        drawDots();
+        let dots = 0;
+        for (let i = 0; i < 8; i++) {
+            dots += hasDot[i];
+        }
+        if(dots==0)
+        {
+            alert("YEAH!");
+        }
+        else if(dots==8)
+        {
+            alert("Uppsi!");
+        }
+      }
+
+      let addButton = document.getElementById("KILL");
+      addButton.addEventListener("click", addDot);
+    </script>
+  </body>
+</html>
