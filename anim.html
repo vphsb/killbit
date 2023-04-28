@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation</title>
+</head>
+<body>
+	<canvas id="canvas" width="600" height="600"></canvas>
+	<div id="dummy" ></div>
+    <script>
+		// style="display: none;"
+        let image = new Image();
+        let canvas;
+        let context;
+		let frame=0;
+		let xpos=0;
+		let scale=4; 
+		canvas = document.getElementById('canvas');
+		context = canvas.getContext('2d');
+		context.imageSmoothingEnabled = false;
+		image.src = 'willysprite.png';
+		image.onload = function() {
+			window.setInterval(playanim,500);
+    		
+		};
+
+		function playanim()
+		{
+			context.fillStyle = "black"; // set fill style to black
+			context.fillRect(0, 0, canvas.width, canvas.height);
+			context.drawImage(image,16*frame,0,16,16,xpos*16,100,16*scale,16*scale);
+			frame = frame +1;
+			if(frame ==4)
+			{
+				frame = 0;
+				xpos=xpos+1.75;
+			}
+			if(xpos>=35)
+			{
+				frame = 0;
+				xpos = 0;
+			}
+
+		}
+		
+
+	</script>
+
+	
+</body>
+</html>
+    
+</html>
+
+
+	
